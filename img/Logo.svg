@@ -1,0 +1,12 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Logo" clip-path="url(#clip0_1_21)">
+<circle id="Ellipse 1" cx="15.3243" cy="24.4588" r="15.3243" fill="#EB001B"/>
+<circle id="Ellipse 2" cx="33.7135" cy="24.4588" r="15.3243" fill="#F79E1B"/>
+<path id="Intersect" fill-rule="evenodd" clip-rule="evenodd" d="M24.5189 36.7182C28.7492 34.2711 31.5953 29.6973 31.5953 24.4588C31.5953 19.2202 28.7492 14.6464 24.5189 12.1993C20.2886 14.6464 17.4425 19.2202 17.4425 24.4588C17.4425 29.6973 20.2886 34.2711 24.5189 36.7182Z" fill="#FF5F00"/>
+</g>
+<defs>
+<clipPath id="clip0_1_21">
+<rect width="49.0378" height="49.0378" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -1,0 +1,277 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+	width: 900px;
+	margin: 0 auto;
+}
+.hero {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.hero__twoscreen {
+	display: flex;
+	justify-content: space-between;
+	gap: 60px;
+}
+.background {
+	color: white;
+	padding: 88px 24px;
+	width: 390px;
+	height: 844px;
+	background: url(/img/unsplash_Bq7nHY4trGA.png);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.background h2,
+.background h3 {
+	text-align: center;
+}
+
+.background h2 {
+	font-size: 28px;
+	font-weight: 700;
+}
+
+.background h3 {
+	font-size: 20px;
+	font-weight: 300;
+	margin-top: 10px;
+}
+
+.screen__new {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 30px 0 10px 0;
+	padding: 0 10px;
+}
+
+.screen__new p {
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.screen__new button {
+	position: relative;
+	color: #f90;
+	text-align: right;
+	font-size: 14px;
+	font-weight: 400;
+	background: none;
+	border: none;
+}
+
+.screen__new button::before {
+	position: absolute;
+	content: '';
+	left: -15px;
+	top: 50%;
+	border-radius: 2px;
+	width: 2px;
+	height: 14px;
+	background-color: #ff9900;
+	transform: translateY(-50%);
+}
+
+.screen__new button::after {
+	position: absolute;
+	content: '';
+	left: -21px;
+	top: 50%;
+	border-radius: 2px;
+	width: 14px;
+	height: 2px;
+	background-color: #ff9900;
+	transform: translateY(-50%);
+}
+
+.credit__cards {
+	width: 100%;
+	height: 780px;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 12px 0;
+}
+
+/* .diving {
+	height: 400px;
+} */
+
+.card {
+	width: 100%;
+	/* height: 400px; */
+	border-radius: 15px;
+	padding: 25px;
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(40.864864349365234px);
+	background: url(/img/Gousian\ Layer.png) no-repeat center/ cover;
+}
+
+.marginh3 {
+	margin: 10px 0;
+}
+
+.card__info {
+	display: grid;
+	align-items: center;
+	grid-template-columns: auto auto;
+}
+
+.card h3 {
+	text-align: left;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 24.519px; /* 153.243% */
+	letter-spacing: 1.6px;
+	text-transform: uppercase;
+	margin-top: 0;
+}
+
+.card__info p {
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 24.519px; /* 204.324% */
+	text-transform: uppercase;
+}
+
+.card__edit {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/* .bank__logo {
+} */
+
+.card__icons {
+	font-size: 24px;
+	color: white;
+}
+
+.delete__all {
+	/* justify-self: flex-end; */
+	align-self: center;
+	border-radius: 40px;
+	background: #f00;
+	padding: 12px 60px;
+	color: #fff;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 24.519px; /* 136.216% */
+	letter-spacing: 0.54px;
+	text-transform: uppercase;
+	border: none;
+}
+
+.add__form {
+	padding: 25px;
+	margin-top: -50px;
+	border-radius: 15px;
+	background: #fff;
+	width: 342px;
+	height: 444px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.add__form input {
+	width: 100%;
+	padding: 4px 0;
+	border: none;
+	outline: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+.add__form h4 {
+	color: #f90;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.add__form h6 {
+	color: rgba(0, 0, 0, 0.25);
+	font-size: 14px;
+	font-weight: 300;
+}
+
+.save {
+	align-self: center;
+	border-radius: 40px;
+	background: #f90;
+	padding: 12px 72px;
+	border: none;
+	color: #fff;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 24.519px; /* 136.216% */
+	letter-spacing: 0.54px;
+	text-transform: uppercase;
+}
+
+.form__end {
+	display: flex;
+	justify-content: space-between;
+}
+.for__switch {
+	width: 40px;
+	height: 20px;
+	/* border: 1px solid black; */
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.for__line {
+	position: absolute;
+	width: 100%;
+	height: 10px;
+	border-radius: 5px;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: #f00;
+	z-index: 0;
+}
+.for__circle {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: #ff9900;
+	z-index: 2;
+}
+
+/* .name {
+}
+.cardnumber {
+}
+.expirydate {
+}
+.cvv {
+} */
+
+/* .hero__screenone {
+}
+.hero__screentwo {
+} */
