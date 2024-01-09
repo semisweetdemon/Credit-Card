@@ -16,8 +16,10 @@
 								<h2>Checkout</h2>
 								<h3>€ 300,00</h3>
 								<div class="screen__new">
-									<p>Saved Cards</p>
-									<button>Add New</button>
+                                    <p>Saved Cards</p>
+									<div class="screen__button">
+										<button class="add__card">Add New</button>
+									</div>
 								</div>
 							</div>
 
@@ -63,21 +65,21 @@
 							<form id="new__card">
 								<div class="add__form">
 									<h4>Enter details</h4>
-									<div>
-										<h6>Name</h6>
-										<input class="card__name" placeholder="Example: Jenner Anne" type="text" required />
+									<div class="input__all">
+										<h6><label for="name">Name</label></h6>
+										<input id="name" class="card__name" placeholder="Example: Jenner Anne" type="text" required />
 									</div>
-									<div >
-										<h6>Card number</h6>
-										<input class="cars__number" placeholder="1234 5678 9009 8765" type="text" required />
+									<div class="input__all" >
+										<h6><label for="cardId">Card number</label></h6>
+										<input id="cardId" class="cars__number" placeholder="1234 5678 9009 8765" type="text" required />
 									</div>
-									<div >
-										<h6>Expiry date</h6>
-										<input class="card__exdate" placeholder="Example: 10/2028" type="text" required />
+									<div class="input__all" >
+										<h6><label for="expire">Expiry date</label></h6>
+										<input id="expire" class="card__exdate" placeholder="Example: 10/2028" type="text" required />
 									</div>
-									<div>
-										<h6>Cvv</h6>
-										<input class="card__cvv" placeholder="045" type="number" required />
+									<div class="input__all">
+										<h6><label for="ccv">Cvv</label></h6>
+										<input id="ccv" class="card__cvv" placeholder="045" type="number" required />
 									</div>
 									<div class="form__end">
 										<h4>Enter details</h4>
@@ -86,9 +88,20 @@
 											<div class="for__circle"></div>
 										</div>
 									</div>
+                                    <div class="choose__card">
+                                        <div class="inputs">
+                                            <input class="cheking" type="radio" name="bank" id="master__card">
+                                            <input checked class="cheking" type="radio" name="bank" id="visa__card">
+                                            <!-- <input type="radio" name="bank" id=""> -->
+                                        </div>
+                                        <div class="choose__images">
+                                            <label for="master__card"><div class="master__card img__one"><img src="/img/master.svg" alt="MasterCard"></div></label>
+                                            <label for="visa__card"><div class="visa__card img__two"><img src="/img/visa.svg" alt="Visa"></div></label>
+                                        </div>
+                                    </div>
 								</div>
 							</form>
-							<input form='new__card' type="submit" form class="save" value="Save"></input>
+							<input form='new__card' type="button" form class="save" value="Save"></input>
 						</div>
 					</div>
 				</div>

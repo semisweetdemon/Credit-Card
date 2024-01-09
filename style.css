@@ -1,4 +1,6 @@
-* {
+*,
+*::before,
+*::after {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -67,6 +69,13 @@ body {
 	font-weight: 400;
 }
 
+.screen__button {
+	width: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
 .screen__new button {
 	position: relative;
 	color: #f90;
@@ -108,12 +117,18 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
-	padding: 12px 0;
+	padding: 12px 5px 12px 0;
 }
 
-/* .diving {
-	height: 400px;
-} */
+.credit__cards::-webkit-scrollbar {
+	width: 5px;
+	background-color: #f90;
+}
+
+.credit__cards:-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #f00;
+}
 
 .card {
 	width: 100%;
@@ -122,7 +137,7 @@ body {
 	padding: 25px;
 	background: rgba(255, 255, 255, 0.03);
 	backdrop-filter: blur(40.864864349365234px);
-	background: url(/img/Gousian\ Layer.png) no-repeat center/ cover;
+	/* background: url(/img/Gousian\ Layer.png) no-repeat center/ cover; */
 }
 
 .marginh3 {
@@ -192,6 +207,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	border: none;
 }
 
 .add__form input {
@@ -236,7 +252,6 @@ body {
 .for__switch {
 	width: 40px;
 	height: 20px;
-	/* border: 1px solid black; */
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -260,6 +275,45 @@ body {
 	border-radius: 50%;
 	background-color: #ff9900;
 	z-index: 2;
+	transition: 0.5s;
+}
+
+.choose__card {
+	display: none;
+	border: 1px solid black;
+	/* width: 100%; */
+	/* height: 50px; */
+	padding: 5px;
+}
+
+.inputs {
+	width: 100%;
+	display: none;
+	justify-content: space-between;
+}
+
+.inputs input {
+	width: 5%;
+}
+
+.choose__images {
+	width: 100%;
+	height: 40px;
+	display: flex;
+	justify-content: space-evenly;
+	background-color: #131313;
+	box-sizing: border-box;
+}
+
+.choose__images img {
+	width: 48px;
+	height: 38px;
+}
+
+.img__one,
+.img__two {
+	width: 50px;
+	height: 40px;
 }
 
 /* .name {
@@ -269,9 +323,8 @@ body {
 .expirydate {
 }
 .cvv {
-} */
-
-/* .hero__screenone {
+}
+.hero__screenone {
 }
 .hero__screentwo {
 } */

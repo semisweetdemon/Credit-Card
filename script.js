@@ -5,17 +5,56 @@ const cvv = document.querySelector('.card__cvv');
 const save = document.querySelector('.save');
 const creditCards = document.querySelector('.credit__cards');
 const deleteAll = document.querySelector('.delete__all');
+const choose = document.querySelector('.for__switch');
+const addCard = document.querySelector('.screen__button');
+const addForm = document.querySelector('.add__form');
+const circle = document.querySelector('.for__circle');
+const cards = document.querySelector('.choose__card');
+const checkAll = document.querySelectorAll('.cheking');
+const masterCard = document.querySelector('#master__card');
+const visaCard = document.querySelector('#visa__card');
+const masterCardBlock = document.querySelector('.img__one');
+const visaCardBlock = document.querySelector('.img__two');
+const inputAll = document.querySelectorAll('.input__all input');
+
+let o = false;
 
 let q = false;
+
+let indexElement = 0;
+
+getCard();
+
+addCard.addEventListener('click', () => {
+	name.focus();
+});
+
+masterCardBlock.addEventListener('click', () => {
+	visaCardBlock.style.border = '';
+	masterCardBlock.style.borderLeft = '1px solid #f00';
+	masterCardBlock.style.borderRight = '1px solid #f00';
+});
+
+visaCardBlock.addEventListener('click', () => {
+	masterCardBlock.style.border = '';
+	visaCardBlock.style.borderLeft = '1px solid #f00';
+	visaCardBlock.style.borderRight = '1px solid #f00';
+});
+
+choose.addEventListener('click', () => {
+	o = !o;
+	circle.style.marginLeft = o ? '20px' : '';
+	cards.style.display = o ? 'block' : '';
+});
+
+save.addEventListener('click', () => {
+	saveAdd();
+});
 
 deleteAll.addEventListener('click', () => {
 	localStorage.removeItem('card');
 	getCard();
 });
-
-console.log(q);
-
-getCard();
 
 name.addEventListener('input', () => {
 	name.style.borderBottom = '';
@@ -47,9 +86,11 @@ expiryDate.addEventListener('input', () => {
 	} else {
 		let res = '';
 		for (let i = 0; i < str.length; i++) {
-			if (i === 2) {
-				res += '/';
-			} else [(res += str[i])];
+			if (i === 2 && str.includes('/') !== true) {
+				res += `/${str[i]}`;
+			} else {
+				res += str[i];
+			}
 		}
 		expiryDate.value = res;
 	}
@@ -63,72 +104,59 @@ cvv.addEventListener('input', () => {
 	}
 });
 
-save.addEventListener('click', () => {
-	function nums(n) {
-		let m = n.split('-');
-		let k = 0;
-		m.forEach((el) => {
-			el.replace(/\D/g, '').length === 4 ? (k += 1) : (k += 0);
-		});
-		return k === 4 ? true : false;
+function nums(n) {
+	let m = n.split('-');
+	let k = 0;
+	m.forEach((el) => {
+		el.replace(/\D/g, '').length === 4 ? (k += 1) : (k += 0);
+	});
+	if (k === 4 && n.length === 19) {
+		return true;
+	} else {
+		cardNumber.style.borderBottom = '1px solid #f00';
+		return false;
 	}
+}
 
-	function date(d) {
-		let e = d.split('/');
-		let k = 0;
-		if (e.length === 2) {
-			e[0].replace(/\D/g, '').length === 2 ? (k += 1) : (k += 0);
-			e[1].replace(/\D/g, '').length === 4 ? (k += 1) : (k += 0);
-		}
-		return k === 2 ? true : false;
+function date(d) {
+	let e = d.split('/');
+	let k = 0;
+	if (e.length === 2) {
+		e[0].replace(/\D/g, '').length === 2 ? (k += 1) : (k += 0);
+		e[1].replace(/\D/g, '').length === 4 ? (k += 1) : (k += 0);
 	}
-
-	function three(c) {
-		let m = c.split('').join('');
-		return m.replace(/\D/g, '').length === 3 ? true : false;
+	if (k === 2 && d.length === 7) {
+		return true;
+	} else {
+		expiryDate.style.borderBottom = '1px solid #f00';
+		return false;
 	}
+}
 
-	let w = 0;
-
-	name.value === '' ? (name.style.borderBottom = '1px solid #f00') : (w += 1);
-	nums(cardNumber.value) === true ? (w += 1) : (cardNumber.style.borderBottom = '1px solid #f00');
-	date(expiryDate.value) === false ? (expiryDate.style.borderBottom = '1px solid #f00') : (w += 1);
-	three(cvv.value) === false ? (cvv.style.borderBottom = '1px solid #f00') : (w += 1);
-
-	console.log(w);
-	if (w === 4) {
-		if (q !== true) {
-			let object = {
-				name: name.value,
-				cardN: cardNumber.value,
-				expiry: expiryDate.value,
-				cvv: cvv.value,
-			};
-
-			let data = JSON.parse(localStorage.getItem('card')) || [];
-			data.push(object);
-			localStorage.setItem('card', JSON.stringify(data));
-			getCard();
-		}
+function three(c) {
+	let m = c.split('').join('');
+	if (m.replace(/\D/g, '').length === 3) {
+		return true;
+	} else {
+		cvv.style.borderBottom = '1px solid #f00';
+		return false;
 	}
-	w = 0;
-});
+}
 
 function getCard() {
 	creditCards.innerHTML = '';
+	let images = ['/img/master.svg', '/img/visa.svg'];
 	let getLocal = JSON.parse(localStorage.getItem('card')) || [];
 	getLocal.forEach((el, idx) => {
 		const card = document.createElement('div');
 		card.setAttribute('class', 'card');
+		card.style.background = `url(/img/one.png) no-repeat center/ cover`;
 		const cardEdit = document.createElement('div');
 		cardEdit.setAttribute('class', 'card__edit');
 		const bankLogo = document.createElement('div');
 		bankLogo.setAttribute('class', 'bank__logo');
-		// const mastercard = document.createElement('svg');
-		// mastercard.style.width = '50px';
-		// mastercard.style.height = '50px';
 		const bankImage = document.createElement('img');
-		bankImage.src = '/img/Logo.svg';
+		bankImage.src = images[el.n];
 		bankLogo.append(bankImage);
 		const cardIcons = document.createElement('div');
 		cardIcons.setAttribute('class', 'card__icons');
@@ -144,20 +172,13 @@ function getCard() {
 			cardNumber.value = el.cardN;
 			expiryDate.value = el.expiry;
 			cvv.value = el.cvv;
-			q = true;
-			save.addEventListener('click', () => {
-				let getRemove = JSON.parse(localStorage.getItem('card')) || [];
-				let obj = {
-					name: name.value,
-					cardN: cardNumber.value,
-					expiry: expiryDate.value,
-					cvv: cvv.value,
-				};
-				getRemove.splice(idx, 1, obj);
-				localStorage.setItem('card', JSON.stringify(getRemove));
-				getCard();
-				q = false;
+			checkAll.forEach((elem, idx) => {
+				if (el.n === idx) {
+					elem.checked = true;
+				}
 			});
+			q = true;
+			indexElement = idx;
 		});
 
 		cardIcons.append(trash, create);
@@ -192,4 +213,56 @@ function delItem(n) {
 	trashForElem.splice(n, 1);
 	localStorage.setItem('card', JSON.stringify(trashForElem));
 	getCard();
+}
+
+function saveAdd() {
+	let w = 0;
+
+	if (name.value === '') {
+		name.style.borderBottom = '1px solid #f00';
+	} else {
+		w += 1;
+	}
+	nums(cardNumber.value) === false ? null : (w += 1);
+	date(expiryDate.value) === false ? null : (w += 1);
+	three(cvv.value) === false ? null : (w += 1);
+
+	let num = 0;
+
+	checkAll.forEach((el, idx) => {
+		if (el.checked) {
+			num = idx;
+		}
+	});
+
+	let object = {
+		name: name.value,
+		cardN: cardNumber.value,
+		expiry: expiryDate.value,
+		cvv: cvv.value,
+		n: num,
+	};
+
+	let data = JSON.parse(localStorage.getItem('card')) || [];
+
+	if (q !== true && w === 4) {
+		checkAll.forEach((el, idx) => {
+			idx === 1 ? (el.checked = true) : (el.checked = false);
+		});
+		masterCardBlock.style.border = '';
+		visaCardBlock.style.border = '';
+		data.push(object);
+		localStorage.setItem('card', JSON.stringify(data));
+		inputAll.forEach((el) => (el.value = ''));
+		getCard();
+	} else if (q === true && w === 4) {
+		masterCardBlock.style.border = '';
+		visaCardBlock.style.border = '';
+		data.splice(indexElement, 1, object);
+		localStorage.setItem('card', JSON.stringify(data));
+		inputAll.forEach((el) => (el.value = ''));
+		getCard();
+		q = false;
+		3;
+	}
 }
