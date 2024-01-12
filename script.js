@@ -145,18 +145,27 @@ function three(c) {
 
 function getCard() {
 	creditCards.innerHTML = '';
-	let images = ['/img/master.svg', '/img/visa.svg'];
+	let images = [
+		{
+			logo: '/img/master.svg',
+			back: `/img/CardOne.png`,
+		},
+		{
+			logo: '/img/visa.svg',
+			back: '/img/CardTwo.png',
+		},
+	];
 	let getLocal = JSON.parse(localStorage.getItem('card')) || [];
 	getLocal.forEach((el, idx) => {
 		const card = document.createElement('div');
 		card.setAttribute('class', 'card');
-		card.style.background = `url(/img/one.png) no-repeat center/ cover`;
+		card.style.background = `url(${images[el.n].back}) no-repeat center/ cover`;
 		const cardEdit = document.createElement('div');
 		cardEdit.setAttribute('class', 'card__edit');
 		const bankLogo = document.createElement('div');
 		bankLogo.setAttribute('class', 'bank__logo');
 		const bankImage = document.createElement('img');
-		bankImage.src = images[el.n];
+		bankImage.src = images[el.n].logo;
 		bankLogo.append(bankImage);
 		const cardIcons = document.createElement('div');
 		cardIcons.setAttribute('class', 'card__icons');
